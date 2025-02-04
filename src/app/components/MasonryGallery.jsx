@@ -112,7 +112,7 @@ const MasonryGallery = () => {
                 <div key={card.id} className="flex flex-col items-center">
                   {/* Card */}
                   <div
-                    className={`${card.width} ${card.height} rounded-[5%] md:rounded-[10%] overflow-hidden transition-all hover:shadow-lg`}
+                    className={`${card.width} ${card.height} rounded-[5%] md:rounded-[10%] overflow-hidden  hover:scale-105 duration-300`}
                   >
                     <img
                       src={card.image}
@@ -133,10 +133,10 @@ const MasonryGallery = () => {
             {cards
               .filter((_, i) => i % 2 !== 0)
               .map((card) => (
-                <div key={card.id} className="flex flex-col items-center">
+                <div key={card.id} className="flex flex-col items-center hover:scale-105 duration-500  ">
                   {/* Card */}
                   <div
-                    className={`${card.width} ${card.height} rounded-[5%] md:rounded-[10%] overflow-hidden transition-all hover:shadow-lg`}
+                    className={`${card.width} ${card.height} rounded-[5%] md:rounded-[10%] overflow-hidden  `}
                   >
                     <img
                       src={card.image}
@@ -145,8 +145,8 @@ const MasonryGallery = () => {
                     />
                   </div>
                   {/* Card Label */}
-                  <p className="mt-2 self-start text-lg font-semibold text-green-900">
-                    {card.title}
+                  <p className="mt-2 self-start text-lg font-semibold text-green-900 hover:font-bold duration-500">
+                    {card.title} 
                   </p>
                 </div>
               ))}
