@@ -193,12 +193,12 @@ const ProgressBar = ({
               strokeWidth={borderWidth}
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeDasharray={`${totalLength} ${totalLength}`}
+              strokeDasharray={totalLength}
               strokeDashoffset={Math.max(
                 totalLength - (totalLength * currentProgress) / 100,
                 0
               )}
-              style={{ transition: "stroke-dashoffset 0.3s ease-in-out " }}
+              style={{ transition: "stroke-dashoffset 0.3s ease-in-out" }}
             />
           </svg>
         </div>
