@@ -86,11 +86,15 @@ const ProgressBar = ({
   }, []);
 
   return (
-    <div id="progress-section" className="relative z-50 h-[200vh]">
+    <div id="progress-section" className="relative z-50 h-[200vh]  ">
+      <div className="flex justify-center ">  
+          <p className="text-[40px]">Our Process</p>
+        </div>
       <div className="sticky top-10">
-        <div className="relative">
+        
+        <div className="relative ">
           {/* Top Content */}
-          <div className="absolute top-0 -left-[25px] w-full">
+          <div className="absolute top-2 -left-[25px] w-full ">
             {stopContent
               .filter((content) => content.position === "top")
               .map((content, index) => {
@@ -100,7 +104,7 @@ const ProgressBar = ({
                     key={`content-top-${index}`}
                     className="absolute transform -translate-x-1/2 flex flex-col items-center"
                     style={{
-                      left: `${(index + 1) * 15}%`, // Adjust positioning as needed
+                      left: `${(index + 1) * 25}%`, // Adjust positioning as needed
                       color: isActive ? trackColor : "#6B7280",
                       transition: "color 0.3s ease-in-out",
                     }}
@@ -140,7 +144,7 @@ const ProgressBar = ({
                     key={`content-bottom-${index}`}
                     className="absolute transform -translate-x-1/2 flex flex-col items-center"
                     style={{
-                      left: `${(index + 1) * 15}%`, // Adjust positioning as needed
+                      left: `${(index + 1) * 25}%`, // Adjust positioning as needed
                       color: isActive ? trackColor : "#6B7280",
                       transition: "color 0.3s ease-in-out",
                     }}
@@ -155,9 +159,11 @@ const ProgressBar = ({
                         className="w-auto h-10 transition-all duration-300"
                         style={{
                           filter: isActive
-                            ? "none" // Remove filter when active
-                            : "grayscale(100%) brightness(80%)", // Gray out when inactive
+                            ? "none"
+                            : "grayscale(100%) brightness(80%)",
+                          fill: isActive ? "#C2202B" : "#6B7280", // Changes fill color when active
                         }}
+                        
                       />
                     </div>
                     {/* Text */}
@@ -171,7 +177,8 @@ const ProgressBar = ({
 
           {/* SVG Progress Bar */}
           <svg
-            viewBox="-600 0 1200 320"
+            className="mt-20"
+            viewBox="-800 0 1200 320"
             width="100%"
             height="350"
             preserveAspectRatio="xMidYMid meet"
