@@ -1,5 +1,9 @@
+'use client'
+import React, { useState } from "react";
+
 const MasonryGallery = () => {
-  // Cards with responsive height classes and images
+  const [selectedCard, setSelectedCard] = useState(null);
+
   const cards = [
     {
       id: 1,
@@ -67,6 +71,14 @@ const MasonryGallery = () => {
     },
   ];
 
+  const openModal = (card) => {
+    setSelectedCard(card);
+  };
+
+  const closeModal = () => {
+    setSelectedCard(null);
+  };
+
   return (
     <div className="max-w-[1280px] xl:max-w-[1280px] md:max-w-[900px] lg:max-w-[900px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 p-4 sm:p-6 md:p-8 lg:p-10">
       {/* Responsive Header */}
@@ -81,19 +93,16 @@ const MasonryGallery = () => {
         <img
           src="/gold-leaf-left.png"
           alt="Leaf Decoration"
-          className="h-[0px] sm:h-[80px] md:h-[10`0px]"
+          className="h-[0px] sm:h-[80px] md:h-[100px]"
         />
       </div>
       <div className="flex items-center justify-center  w-full gap-2  sm:gap-10">
-        {/* Left Button */}
         <button className="border-2 border-green-900 px-2 py-1 sm:px-8 sm:py-3 rounded-full text-green-900 font-semibold text-[15px]  sm:text-lg">
           Spaces
         </button>
-        {/* Center Text */}
         <p className="text-[30px] font-bold text-green-900 tracking-wide">
           GALLERY
         </p>
-        {/* Right Button */}
         <button className="border-2 border-green-900 px-2 py-1 sm:px-8 sm:py-3 rounded-full text-green-900 font-semibold text-[10px] sm:text-lg">
           View All Villas
         </button>
@@ -103,16 +112,16 @@ const MasonryGallery = () => {
 
       {/* Responsive Masonry Grid */}
       <div className="mt-10 sm:mt-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:pl-8 lg:pl-0 md:gap-24 lg:gap-20 xl:gap-10  ">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:pl-8 lg:pl-0 md:gap-24 lg:gap-20 xl:gap-10">
           {/* First Column */}
           <div className="space-y-4 sm:space-y-6 md:space-y-6 lg:space-y-8">
             {cards
               .filter((_, i) => i % 2 === 0)
               .map((card) => (
                 <div key={card.id} className="flex flex-col items-center">
-                  {/* Card */}
                   <div
-                    className={`${card.width} ${card.height} rounded-[5%] md:rounded-[10%] overflow-hidden  hover:scale-105 duration-300`}
+                    className={`${card.width} ${card.height} rounded-[5%] md:rounded-[10%] overflow-hidden cursor-pointer`}
+                    onClick={() => openModal(card)}
                   >
                     <img
                       src={card.image}
@@ -120,7 +129,6 @@ const MasonryGallery = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  {/* Card Label */}
                   <p className="mt-2 self-start text-lg font-semibold text-green-900">
                     {card.title}
                   </p>
@@ -133,10 +141,10 @@ const MasonryGallery = () => {
             {cards
               .filter((_, i) => i % 2 !== 0)
               .map((card) => (
-                <div key={card.id} className="flex flex-col items-center hover:scale-105 duration-500  ">
-                  {/* Card */}
+                <div key={card.id} className="flex flex-col items-center">
                   <div
-                    className={`${card.width} ${card.height} rounded-[5%] md:rounded-[10%] overflow-hidden  `}
+                    className={`${card.width} ${card.height} rounded-[5%] md:rounded-[10%] overflow-hidden cursor-pointer`}
+                    onClick={() => openModal(card)}
                   >
                     <img
                       src={card.image}
@@ -144,15 +152,33 @@ const MasonryGallery = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  {/* Card Label */}
-                  <p className="mt-2 self-start text-lg font-semibold text-green-900 hover:font-bold duration-500">
-                    {card.title} 
+                  <p className="mt-2 self-start text-lg font-semibold text-green-900">
+                    {card.title}
                   </p>
                 </div>
               ))}
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {selectedCard && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+          <div className="relative  p-4 rounded-lg w-[90vw] h-[90vh] sm:w-[80vw] sm:h-[80vh] md:w-[70vw] md:h-[70vh] lg:w-[60vw] lg:h-[60vh] xl:w-[50vw] xl:h-[90vh] overflow-hidden">
+            <img
+              src={selectedCard.image}
+              alt={selectedCard.title}
+              className="w-full h-full object-cover"
+            />
+            <button
+              onClick={closeModal}
+              className="absolute top-2 right-2 bg-white text-black rounded-full w-8 h-8 flex items-center justify-center shadow-lg hover:bg-gray-100"
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
