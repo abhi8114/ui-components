@@ -106,7 +106,7 @@ const ProgressBar = ({
                     className="absolute transform -translate-x-1/2 flex flex-col items-center"
                     style={{
                       left: `${(index + 1) * 25}%`, // Adjust positioning as needed
-                      color: isActive ? trackColor : "#6B7280",
+                      color:  "#000000",
                       transition: "color 0.3s ease-in-out",
                     }}
                   >
@@ -126,7 +126,7 @@ const ProgressBar = ({
                       />
                     </div>
                     {/* Text */}
-                    <div className=" w-[170px] mt-6 text-[16px] font-medium text-center">
+                    <div className=" w-[170px] mt-6 text-sm text-center">
                       {content.text}
                     </div>
                   </div>
@@ -146,7 +146,7 @@ const ProgressBar = ({
                     className="absolute transform -translate-x-1/2 flex flex-col items-center"
                     style={{
                       left: `${(index + 1) * 25}%`, // Adjust positioning as needed
-                      color: isActive ? trackColor : "#6B7280",
+                      color: "#000000",
                       transition: "color 0.3s ease-in-out",
                     }}
                   >
@@ -166,7 +166,7 @@ const ProgressBar = ({
                       />
                     </div>
                     {/* Text */}
-                    <div className="top-4  mb-6 w-[170px] text-center text-[16px] font-medium">
+                    <div className="-mt-3   w-[170px] text-center text-sm ">
                       {content.text}
                     </div>
                   </div>
