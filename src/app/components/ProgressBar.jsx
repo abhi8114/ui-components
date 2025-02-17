@@ -166,7 +166,7 @@ const ProgressBar = ({
                       />
                     </div>
                     {/* Text */}
-                    <div className="-mt-3   w-[170px] text-center text-sm ">
+                    <div className="-mt-1   w-[170px] text-center text-sm ">
                       {content.text}
                     </div>
                   </div>
