@@ -53,7 +53,7 @@ const ProgressBar = ({
     
   ];
 
-  const hardcodedPath = "M-550,10 H100 Q200,10 200,160 Q200,310 100,300 H-550";
+  const hardcodedPath = "M-550,10 H100 Q200,10 200,160 Q200,310 100,310 H-550";
 
   // Calculate the total length of the hardcoded path
   useEffect(() => {
