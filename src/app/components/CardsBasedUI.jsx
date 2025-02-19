@@ -41,7 +41,7 @@ const villaFeatures = [
 ];
 
 const CardsBasedUI = () => {
-  const [activeSection, setActiveSection] = useState(null);
+  const [activeSection, setActiveSection] = useState('null');
 
   const handlePremiumClick = () => {
     setActiveSection(activeSection === "premium" ? null : "premium");
@@ -50,6 +50,7 @@ const CardsBasedUI = () => {
   const handleVillasClick = () => {
     setActiveSection(activeSection === "villa" ? null : "villa");
   };
+  console.log(activeSection);
 
   const getContent = (type = "premium") => {
     const isVilla = type === "villa";
@@ -150,7 +151,8 @@ const CardsBasedUI = () => {
 
         {/* Gallery */}
         <div className="mt-10 md:mt-20 max-w-[1024px] mx-auto">
-          <Gallery />
+          <Gallery  activeSection={activeSection}/>
+          
         </div>
       </div>
     );
