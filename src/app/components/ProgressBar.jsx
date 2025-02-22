@@ -7,6 +7,7 @@ const ProgressBar = ({
   trackColor = "#C2202B",
   trackBgColor = "#F8F2F2",
   borderWidth = 8,
+  mobBorderWidth = 12,
 }) => {
   const [currentProgress, setCurrentProgress] = useState(0);
   const [totalLength, setTotalLength] = useState(0);
@@ -32,10 +33,10 @@ const ProgressBar = ({
       stopPercentage: 35, // Specific stopping percentage for this SVG
     },
     {
-      svg: "/fifth.svg",
-      text: "Real-time Shipment Tracking",
+      svg: "/third.svg",
+      text: "Access PODs Online",
       position: "bottom",
-      stopPercentage: 100, // Specific stopping percentage for this SVG
+      stopPercentage: 65, // Specific stopping percentage for this SVG
     },
     {
       svg: "/fourth.svg",
@@ -43,18 +44,16 @@ const ProgressBar = ({
       position: "bottom",
       stopPercentage: 82, // Specific stopping percentage for this SVG
     },
-   
     {
-      svg: "/third.svg",
-      text: "Access PODs Online",
+      svg: "/fifth.svg",
+      text: "Real-time Shipment Tracking",
       position: "bottom",
-      stopPercentage: 65, // Specific stopping percentage for this SVG
+      stopPercentage: 100, // Specific stopping percentage for this SVG
     },
-    
   ];
 
   const hardcodedPath = "M-550,10 H100 Q200,10 200,160 Q200,310 100,310 H-550";
-
+  const mobhardCodedPath = "M10,0 L10,600";
   // Calculate the total length of the hardcoded path
   useEffect(() => {
     const pathElement = document.createElementNS(
@@ -63,6 +62,25 @@ const ProgressBar = ({
     );
     pathElement.setAttribute("d", hardcodedPath);
     setTotalLength(pathElement.getTotalLength());
+  }, []);
+
+  const [mobileTotalLength, setMobileTotalLength] = useState(0);
+  useEffect(() => {
+    // Calculate total length for desktop path
+    const desktopPathElement = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "path"
+    );
+    desktopPathElement.setAttribute("d", hardcodedPath);
+    setTotalLength(desktopPathElement.getTotalLength());
+
+    // Calculate total length for mobile path
+    const mobilePathElement = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "path"
+    );
+    mobilePathElement.setAttribute("d", mobhardCodedPath);
+    setMobileTotalLength(mobilePathElement.getTotalLength());
   }, []);
 
   useEffect(() => {
@@ -89,10 +107,10 @@ const ProgressBar = ({
 
   return (
     <div id="progress-section" className="relative z-50 h-[200vh]">
-      <div className="flex justify-center">
+      <div className="sm:flex justify-center hidden ">
         <p className="text-[40px]">Our Process</p>
       </div>
-      <div className="sticky top-10">
+      <div className="sticky top-10 hidden sm:block">
         <div className="relative">
           {/* Top Content */}
           <div className="absolute top-2 -left-[25px] w-full">
@@ -106,7 +124,7 @@ const ProgressBar = ({
                     className="absolute transform -translate-x-1/2 flex flex-col items-center"
                     style={{
                       left: `${(index + 1) * 25}%`, // Adjust positioning as needed
-                      color:  "#000000",
+                      color: "#000000",
                       transition: "color 0.3s ease-in-out",
                     }}
                   >
@@ -209,7 +227,74 @@ const ProgressBar = ({
           </svg>
         </div>
       </div>
+      {/* Progress Indicator for mobile */}
+      <div className="block sm:hidden sticky top-10 ">
+        <p className="text-[24px] font-semibold flex justify-center ">Our Process</p>
+        <div className="block sm:hidden">
+      {/* This container will remain fixed until unpinned */}
+      
+        <div className=" mt-4 flex relative gap-2">
+          <div className="">
+            <svg
+              viewBox="-30 0 100 620"
+              width="100%"
+              
+              preserveAspectRatio="xMidYMid meet"
+              className="mt-6 w-[90px] h-[580px] "
+            >
+              {/* Background Track */}
+              <path
+                d={mobhardCodedPath}
+                fill="none"
+                stroke={trackBgColor}
+                strokeWidth={mobBorderWidth}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              {/* Progress Track */}
+              <path
+                d={mobhardCodedPath}
+                fill="none"
+                stroke={trackColor}
+                strokeWidth={mobBorderWidth}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeDasharray={mobileTotalLength}
+                strokeDashoffset={Math.max(
+                  mobileTotalLength - (mobileTotalLength * currentProgress) / 100,
+                  0
+                )}
+                style={{ transition: "stroke-dashoffset 0.3s ease-in-out" }}
+              />
+            </svg>
+          </div>
+
+          {/* Content section */}
+          <div className="w-2/3 px-4 py-4 flex flex-col space-y-10">
+            {stopContent.map((step, index) => {
+              const isActive = currentProgress >= step.stopPercentage;
+              return (
+                <div key={index} className="flex items-center space-x-4">
+                  <img
+                    src={step.svg}
+                    alt="Step Icon"
+                    className="w-14 h-14 transition-all duration-300"
+                    style={{
+                      filter: isActive
+                        ? "brightness(0) saturate(100%) invert(18%) sepia(70%) saturate(3000%) hue-rotate(340deg) brightness(90%) contrast(90%)"
+                        : "grayscale(100%) brightness(80%)",
+                    }}
+                  />
+                  <p className="text-[16px]">{step.text}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+
   );
 };
 

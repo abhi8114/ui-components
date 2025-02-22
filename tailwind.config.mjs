@@ -11,6 +11,10 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      screens: {
+       'mob-m': '375px',
+       'mob-l': '425px',
+      },
     },
   },
   plugins: [],
