@@ -7,6 +7,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ["Montserrat", 'sans-serif'],
+        cormorant: ["Cormorant Garamond", 'serif'],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

@@ -4,15 +4,16 @@ import MasonryGallery from "./components/MasonryGallery";
 import TrackingTimeline from "./components/TrackingTimeline";
 import ProgressBar from "./components/ProgressBar";
 import CardsBasedUI from "./components/CardsBasedUI";
+import SecSlider from "./components/SecSlider";
 export default function Home() {
   return (
    <div>
     
    {/* <MasonryGallery />  */}
-   <ProgressBar /> 
+   {/* <ProgressBar />  */}
     {/* <TrackingTimeline /> */}
     {/* <CardsBasedUI /> */}
-   
+   <SecSlider />
     
    </div>
   );

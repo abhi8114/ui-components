@@ -285,7 +285,7 @@ const ProgressBar = ({
                         : "grayscale(100%) brightness(80%)",
                     }}
                   />
-                  <p className="text-[16px]">{step.text}</p>
+                  <p className="text-[20px]">{step.text}</p>
                 </div>
               );
             })}
