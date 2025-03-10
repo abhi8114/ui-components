@@ -6,9 +6,9 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import ModalSection from "./ModalSection";
+import ModalSectionTwo from "./ModalSectionTwo";
 
-const SecSlider = () => {
+const Sec2Slider = () => {
   const swiperRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -16,69 +16,51 @@ const SecSlider = () => {
   const data = [
     {
       image: "./story.png",
-      heading: "Brand Story and Narrative",
+      heading: "Pre Openings",
       content:
-        "Your brand defines how guests perceive your property. We craft cohesive identities through engaging websites, stunning visuals, and tailored strategies to ensure your brand tells a story that resonates with guests and meets market demands.",
-      background: "linear-gradient(to right, #ff7e5f, #feb47b)",
+        "We ensure a seamless hotel launch with services like SOP implementation, unique F&B concepts, budgeting, guest technology, and sustainability certifications. From talent acquisition to operational oversight and sales strategies, we align every aspect of your property for exceptional guest experiences and long-term success.",
+      background: "blue",
       learnMoreLinkImage: "./arrow.svg",
       learnMoreLinkText: "Learn More",
     },
     {
       image: "https://example.com/image2.jpg",
-      heading: "Land Acquisition",
+      heading: "White-labelled full-spectrum third party operations",
       content:
-        "Identify and secure prime locations for hospitality projects, ensuring alignment with market demand, project concept, and long-term investment goals. Assist in due diligence, negotiations, and compliance to streamline the acquisition process.",
+        "We manage daily operations, guest services, sales, marketing, reservations, revenue management, staff training, and cost control under your brand, ensuring quality, profitability, and guest satisfaction",
       background: "url('https://example.com/bg.jpg') center/cover no-repeat",
+      learnMoreLinkImage: "./arrow.svg",
+      learnMoreLinkText: "Learn More",
     },
     {
       image: "https://example.com/image3.jpg",
-      heading: "Architecture & Interior Concept",
+      heading: "Technology Integration",
       content:
-        "Develop bespoke architectural and interior design concepts that align with the property’s brand identity and guest experience vision. Focus on functionality, aesthetics, and sustainability to create spaces that inspire and engage.",
+        "Streamline your hotel operations with advanced Property Management System (PMS) solutions, enabling seamless reservations, inventory management, and efficient day-to-day operations.",
       background: "#4CAF50",
+      learnMoreLinkImage: "./arrow.svg",
+      learnMoreLinkText: "Learn More",
     },
     {
       image: "https://example.com/image4.jpg",
-      heading: "Stand-alone F&B concepts & operations",
+      heading: "Technical Audits & Quality Control",
       content:
-        "Create distinct food and beverage concepts that reflect the target audiences and location. Focus on practical operations, appealing menus, and memorable dining experiences.",
+        "Keep your property performing at its best with audits and quality checks.From building systems and energy efficiency to guest rooms and F&B services, we identify improvements and ensure compliance with brand standards.",
       background: "linear-gradient(to bottom, #2b5876, #4e4376)",
+      learnMoreLinkImage: "./arrow.svg",
+      learnMoreLinkText: "Learn More",
+    },
+    {
+      image: "https://example.com/image4.jpg",
+      heading: "Financial Management & Reporting",
+      content:
+        "Take control of your finances with transparent reports, data insights, and P&L management. Our services optimize profitability, track KPIs, and provide analytics to guide informed decisions across operation .",
+      background: "linear-gradient(to bottom, #2b5876, #4e4376)",
+      learnMoreLinkImage: "./arrow.svg",
+      learnMoreLinkText: "Learn More",
     },
   ];
   const [hoveredIndex, setHoveredIndex] = useState(null);
-
-  const services = [
-    {
-      title: "Website Design, Development & Management",
-      description:
-        "Boost your online presence with custom, user-friendly websites designed to engage visitors, enhance your brand, and elevate your hotel’s reputation.",
-      img: "./image.png",
-    },
-    {
-      title: "Professional Photography and Videography",
-      description:
-        "High-quality visuals to showcase your brand, capture moments, and create a lasting impression.",
-      img: "/photography.jpg",
-    },
-    {
-      title: "Brand Positioning & Marketing Strategy",
-      description:
-        "Strategic branding and marketing solutions tailored to establish and grow your business presence.",
-      img: "/brand-strategy.jpg",
-    },
-    {
-      title: "addtional services",
-      description:
-        "Strategic branding and marketing solutions tailored to establish and grow your business presence.",
-      img: "/brand-strategy.jpg",
-    },
-    {
-      title: "additional services 2 ",
-      description:
-        "Strategic branding and marketing solutions tailored to establish and grow your business presence.",
-      img: "/brand-strategy.jpg",
-    },
-  ];
 
   useEffect(() => {
     setActiveIndex(0);
@@ -89,16 +71,14 @@ const SecSlider = () => {
   };
 
   return (
-    <div className="h-auto w-full bg-[#447365] py-10 relative">
+    <div className="h-[110vh] w-full bg-[#CDE2CA] py-10 relative">
       {!selectedItem ? (
         // Slider Section
         <div className="ml-[128px] max-w-[1200px] mx-auto ">
           {/* Section Heading */}
-          <span className="bg-[#2E413B] py-1 px-2 tracking-wide text-white uppercase font-montserrat text-xs rounded-md">
-            OUR OFFERINGS
-          </span>
-          <h2 className="font-cormorant font-normal md:text-[40px] text-[28px] leading-9 md:leading-[48px] mt-5 text-white">
-            Hospitality Concept Creation
+
+          <h2 className="font-cormorant font-normal md:text-[40px] text-[28px] leading-9 md:leading-[40px] mt-5 text-[#2D2D2D] tracking-[-1.2px]">
+            Hotel Operation Management
           </h2>
 
           {/* Swiper Slider */}
@@ -125,7 +105,7 @@ const SecSlider = () => {
                     <img
                       src={item.image}
                       alt={item.heading}
-                      className="mt-11 w-14 h-16 mb-4 "
+                      className="mt-8 w-14 h-16 mb-2 "
                     />
                     <h2 className="text-[32px] font-cormorant mb-2 leading-[32px] pr-28">
                       {item.heading}
@@ -148,14 +128,14 @@ const SecSlider = () => {
             </Swiper>
 
             {/* Custom Pagination Dots */}
-            <div className="flex w-[80px] mt-8 space-x-3">
+            <div className="flex w-auto mt-8 space-x-3">
               {data.map((_, index) => (
                 <span
                   key={index}
-                  className={`w-2 h-2 rounded-full cursor-pointer border border-[#FFFFFB] transition ${
+                  className={`w-2 h-2 rounded-full cursor-pointer border border-[#447365] transition ${
                     index === activeIndex
-                      ? "bg-white scale-110"
-                      : "bg-[#447365]"
+                      ? "bg-[#447365] scale-110"
+                      : "bg-[#CDE2CA]"
                   }`}
                   onClick={() => swiperRef.current?.slideToLoop(index)}
                 ></span>
@@ -179,10 +159,9 @@ const SecSlider = () => {
         </div>
       ) : (
         // Modal Section
-        <ModalSection
+        <ModalSectionTwo
           selectedItem={selectedItem}
           setSelectedItem={setSelectedItem}
-          services={services}
           hoveredIndex={hoveredIndex}
           setHoveredIndex={setHoveredIndex}
         />
@@ -191,4 +170,4 @@ const SecSlider = () => {
   );
 };
 
-export default SecSlider;
+export default Sec2Slider;
