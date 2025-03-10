@@ -11,11 +11,11 @@ export default function Home() {
    <div>
     
    {/* <MasonryGallery />  */}
-   {/* <ProgressBar />  */}
+   <ProgressBar /> 
     {/* <TrackingTimeline /> */}
     {/* <CardsBasedUI /> */}
-   <SecSlider />
-   <Sec2Slider />
+   {/* <SecSlider />
+   <Sec2Slider /> */}
     
    </div>
   );
