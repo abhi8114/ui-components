@@ -92,22 +92,25 @@ const SecSlider = () => {
     <div className="h-auto w-full bg-[#447365] py-10 relative">
       {!selectedItem ? (
         // Slider Section
-        <div className="ml-[128px] max-w-[1200px] mx-auto ">
+        <div className="ml-[32px]  md:ml-[128px] max-w-[1200px] mx-auto ">
           {/* Section Heading */}
           <span className="bg-[#2E413B] py-1 px-2 tracking-wide text-white uppercase font-montserrat text-xs rounded-md">
             OUR OFFERINGS
           </span>
-          <h2 className="font-cormorant font-normal md:text-[40px] text-[28px] leading-9 md:leading-[48px] mt-5 text-white">
+          <h2 className="font-cormorant font-normal md:text-[40px] text-[28px] md:leading-[48px] mt-5 text-white leading-[36px] pr-10 md:pr-0">
             Hospitality Concept Creation
           </h2>
 
           {/* Swiper Slider */}
-          <div className="mt-8  relative">
+          <div className="md:mt-8 mt-4  relative">
             <Swiper
               modules={[Navigation]}
-              spaceBetween={170}
+              spaceBetween={120}
               slidesPerView={1}
               breakpoints={{
+  
+                375: { slidesPerView: 1.4 },
+                425: { slidesPerView: 1.4 },
                 640: { slidesPerView: 1 },
                 768: { slidesPerView: 2 },
                 1024: { slidesPerView: 3 },
@@ -119,18 +122,18 @@ const SecSlider = () => {
               {data.map((item, index) => (
                 <SwiperSlide key={index} className="gap-x-20">
                   <div
-                    className="p-8 w-[400px] h-[500px] text-white shadow-lg"
+                    className="p-8 w-[300px] h-[480px]  md:w-[400px] md:h-[500px] text-white shadow-lg"
                     style={{ background: item.background }}
                   >
                     <img
                       src={item.image}
                       alt={item.heading}
-                      className="mt-11 w-14 h-16 mb-4 "
+                      className=" md:mt-11 w-14 h-16 mb-4 "
                     />
-                    <h2 className="text-[32px] font-cormorant mb-2 leading-[32px] pr-28">
+                    <h2 className="text-[24px] leading-[28px] md:text-[32px] font-cormorant mb-2 md:leading-[32px] pr-12 md:pr-28 ">
                       {item.heading}
                     </h2>
-                    <p className="mt-4 text-[16px] leading-[24px] mb-4 font-montserrat pr-16">
+                    <p className="mt-4 text-[14px]  md:text-[16px] leading-[24px] mb-4 font-montserrat  pr-12 md:pr-16">
                       {item.content}
                     </p>
                     <button
