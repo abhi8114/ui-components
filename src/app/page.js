@@ -6,17 +6,19 @@ import ProgressBar from "./components/ProgressBar";
 import CardsBasedUI from "./components/CardsBasedUI";
 import SecSlider from "./components/SecSlider";
 import Sec2Slider from "./components/Sec2Slider";
+import ThemeToggle from "./components/ThemeToggle";
 export default function Home() {
   return (
    <div>
     
    {/* <MasonryGallery />  */}
-   <ProgressBar /> 
+   {/* <ProgressBar />  */}
     {/* <TrackingTimeline /> */}
     {/* <CardsBasedUI /> */}
    {/* <SecSlider />
    <Sec2Slider /> */}
     
+    < ThemeToggle />
    </div>
   );
 }
